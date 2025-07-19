@@ -4,13 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Job {
-    private String jobId;
+    private String jobId = UUID.randomUUID().toString();
     private String jobName;
     private int jobDuration;
-    private int jobPriority;
-    private String status;
+
+    public Job(String jobName, int jobDuration) {
+        this.jobId = UUID.randomUUID().toString();  // Auto-generated
+        this.jobName = jobName;
+        this.jobDuration = jobDuration;
+    }
 }
